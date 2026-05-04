@@ -1,5 +1,11 @@
 // sum.test.js
 
-test('adds 1 + 2 to equal 3', () => {
-  // TODO
+import { sum } from '../code-to-unit-test/sum.js';
+
+test('adds 1 + 2 to equal 3 (sanity check)', () => {
+  expect(1 + 2).toBe(3);
+});
+
+test('sum(1,2) returns 3', () => {
+  expect(sum(1, 2)).toBe(3);
 });
