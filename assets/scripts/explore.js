@@ -12,6 +12,7 @@ function init() {
   const smilingOpen = 'assets/images/smiling-open.png';
 
   function populateVoices() {
+    const previous = voiceSelect.value;
     const voices = speechSynthesis.getVoices();
     while (voiceSelect.options.length > 1) {
       voiceSelect.remove(1);
@@ -21,6 +22,14 @@ function init() {
       option.value = voice.voiceURI;
       option.textContent = `${voice.name} (${voice.lang})`;
       voiceSelect.appendChild(option);
+    }
+    if (previous && previous !== 'select') {
+      const match = Array.from(voiceSelect.options).some(
+        (opt) => opt.value === previous
+      );
+      if (match) {
+        voiceSelect.value = previous;
+      }
     }
   }
 
